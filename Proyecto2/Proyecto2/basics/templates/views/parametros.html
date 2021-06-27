@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos</title>
+</head>
+<body>
+    <h1>Hola</h1>
+    <p>El alumno se llama: {{nombre_estudiante}} {{apellido_estudiante}} </p>
+    <p>{{arreglo_1}}</p>
+    <p>{{arreglo_1.0}}</p>
+    <p>{{arreglo_1.1}}</p>
+    <p><Strong>Arreglo Externo:</Strong></p>
+    <p>{{arreglo_2.0}}</p>
+    <p>{{arreglo_2.1}}</p>
+    <p>{{arreglo_2.2}}</p>
+    <p><Strong>Ciclos For:</Strong></p>
+    <p>
+        {% for apuntandor in arreglo_3 %}
+        <p>
+            {{apuntandor}}
+        </p>
+        {%endfor%}
+    </p>
+    <p>
+        <ul>
+            {%for apuntandor in arreglo_3%}
+            <li>
+                {{apuntandor}}
+            </li>
+            {%endfor%}
+        </ul>
+    </p>
+
+    <p>
+        <p>
+            <Strong>
+                Condicionales
+            </Strong>
+        </p>
+        <p>
+            {%if fecha.day == 25%}
+
+                <p>
+                    El dia de hoy es correcto
+                </p>
+
+            {%else%}
+                <p>
+                    El dia de hoy es diferente
+                </p>
+            {%endif%}
+        </p>
+    </p>
+</body>
+</html>

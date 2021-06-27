@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<table class="table table-borderless" >
+	<thead class="border-bottom font-weight-bold">
+	<tr>
+    	<td>Codigo Pedido</td>
+    	<td>Numero</td>
+        <td>Codigo Cliente</td>
+    	<td>Codigo Producto</td>
+   		 <td>
+            <a href="{% url 'insert_pedido' %}" class="btn btn.outline-sucess">
+				<i class="fas fa-plus"></i>
+			</a>
+    	</td>
+	</tr>
+	</thead>
+    <tbody>
+        {% for Pedidos in listar_pedidos %}
+
+            <tr>
+                <td>{{Pedidos.codigo_pedido}}</td>
+                <td>{{Pedidos.numero_pedido}}</td>
+                <td>{{Pedidos.codigo_cliente}}</td>
+                <td>{{Pedidos.codigo_producto}}</td>
+		
+                <td>
+                    <a href="{% url 'update_pedidos' Pedidos.id %}" class="btn text-secondary px-0">
+                        <i class="far fa-edit fa-lg"></i>
+                    </a>
+                    <form action="{% url 'delete_pedidos' Pedidos.id %}" method="POST" class="d-inline">
+                        {%csrf_token%}
+                        <button type="submit" class="btn">
+                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %} 

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<table class="table table-borderless" >
+	<thead class="border-bottom font-weight-bold">
+	<tr>
+    	<td>Codigo Cliente</td>
+        <td>Empresa</td>
+    	<td>Nombre</td>
+        <td>Apellido</td>
+    	<td>Puesto</td>
+ 	    <td>Direccion</td>
+	    <td>Poblacion</td>
+        <td>Telefono/td>
+        <td>CP</td>
+        <td>CC</td>
+        <td>
+            <a href="{% url 'insert_cliente' %}" class="btn btn.outline-sucess">
+				<i class="fas fa-plus"></i>
+			</a>
+    	</td>
+	</tr>
+	</thead>
+    <tbody>
+        {% for Clientes in listar_clientes %}
+
+            <tr>
+                <td>{{Clientes.codigo_cliente}}</td>
+                <td>{{Clientes.empresa}}</td>
+                <td>{{Clientes.nombre_cliente}}</td>
+                <td>{{Clientes.apellido_cliente}}</td>
+                <td>{{Clientes.puesto}}</td>
+                <td>{{Clientes.direccion}}</td>
+                <td>{{Clientes.poblacion}}</td>
+                <td>{{Clientes.telefono}}</td>
+                <td>{{Clientes.cp}}</td>
+                <td>{{Clientes.numerocc}}</td>
+		
+                <td>
+                    <a href="{% url 'update_clientes' Clientes.id %}" class="btn text-secondary px-0">
+                        <i class="far fa-edit fa-lg"></i>
+                    </a>
+                    <form action="{% url 'delete_clientes' Clientes.id %}" method="POST" class="d-inline">
+                        {%csrf_token%}
+                        <button type="submit" class="btn">
+                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %} 

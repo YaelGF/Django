@@ -1,0 +1,27 @@
+pip install virtualenv
+
+#Creacion del entorno
+python -m venv -name-
+
+#Abrir entorno
+source -name-/bin/activate
+
+#instalar Django
+pip install django
+
+#empezar proyecto django
+django-admin startproject -name-
+
+#Manejo de Django
+
+#Encender Servidor
+python manage.py runserver
+
+#Crear aplicacion
+python manage.py startapp -name-
+
+#Hacer migracion
+python manage.py migrate
+
+#Crear super ususarios
+python manage.py createsuperuser

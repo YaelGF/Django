@@ -1,0 +1,48 @@
+{% extends "registro/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<table class="table table-borderless">
+	<thead class="border-bottom font-weight-bold">
+	<tr>
+	  	 <td>ID</td>
+    		 <td>Nombre</td>
+    		 <td>AP</td>
+           	 <td>AM</td>
+    		 <td>No. Control</td>
+ 	         <td>Cuatrimestre</td>
+	    	 <td>Grupo</td>
+   		 <td>
+			<a href="{% url 'insert_alumnos' %}" class="btn btn.outline-sucess">
+				<i class="fas fa-plus"></i>
+			</a>
+    	</td>
+	</tr>
+	</thead>
+    <tbody>
+        {% for alumno in listar_alumnos %}
+
+            <tr>
+	      	<td>{{alumno.id}}</td>
+                <td>{{alumno.nombre}}</td>
+                <td>{{alumno.apellido_paterno}}</td>
+                <td>{{alumno.apellido_materno}}</td>
+                <td>{{alumno.no_control}}</td>
+                <td>{{alumno.cuatrimestre}}</td>
+                <td>{{alumno.grupo}}</td>
+		
+		<td>
+		  <a href="{% url 'update_registros' alumno.id  %}" class="btn text-secondary px-0">
+			<i class="far fa-edit fa-lg"></i>
+	       	  </a>
+		  <form action="{% url 'delete_registro' alumno.id %}" method="POST" class="d-inline">
+		     {%csrf_token%}
+		     <button type="submit" class="btn">
+			<i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+		     </button>
+		  </form>
+		</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

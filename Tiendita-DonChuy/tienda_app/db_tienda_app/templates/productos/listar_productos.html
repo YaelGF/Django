@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<table class="table table-borderless" >
+	<thead class="border-bottom font-weight-bold">
+	<tr>
+    	<td>Codigo Producto</td>
+    	<td>Nombre</td>
+        <td>Codigo Provedor</td>
+    	<td>Precio Unitario</td>
+ 	    <td>Existencia</td>
+	    <td>Descripcion</td>
+        <td>
+            <a href="{% url 'insert_producto' %}" class="btn btn.outline-sucess">
+				<i class="fas fa-plus"></i>
+			</a>
+    	</td>
+	</tr>
+	</thead>
+    <tbody>
+        {% for Productos in listar_productos %}
+
+            <tr>
+                <td>{{Productos.codigo_producto}}</td>
+                <td>{{Productos.nombre_producto}}</td>
+                <td>{{Productos.codigo_proveedor}}</td>
+                <td>{{Productos.precio_unidad}}</td>
+                <td>{{Productos.unidad_existencia}}</td>
+                <td>{{Productos.Descripcion_producto}}</td>
+		
+                <td>
+                    <a href="{% url 'update_productos' Productos.id %}" class="btn text-secondary px-0">
+                        <i class="far fa-edit fa-lg"></i>
+                    </a>
+                    <form action="{% url 'delete_productos' Productos.id %}" method="POST"  class="d-inline">
+                        {%csrf_token%}
+                        <button type="submit" class="btn">
+                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %} 
