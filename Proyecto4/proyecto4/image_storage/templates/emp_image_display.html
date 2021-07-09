@@ -1,0 +1,10 @@
+{%  load static %}
+
+<!DOCTYPE html>
+<body>
+    <h1>Nombre  {{emp.nombre}}</h1>
+    <img src="{{emp.emp_image.url}}" alt="Smiley Face" width="300" height="300">
+    <br/>
+    <a href="{% url 'home' %}">Volver al inicio</a>
+</body>
+</html>

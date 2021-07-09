@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+  <form action="" method="post" autocomplete="off" style="padding-top: 3%;" >
+    {%csrf_token%}
+    <div class="row">
+      <div class="col-md-6">
+        {{form.codigo_pedido|as_crispy_field}}
+      </div>
+      <div class="col-md-6">
+        {{form.numero_pedido|as_crispy_field}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        {{form.codigo_cliente|as_crispy_field}}
+      </div>
+      <div class="col-md-6">
+        {{form.codigo_producto|as_crispy_field}}
+      </div>
+    </div>
+    <div class="row" style="padding-top: 3%;">
+      <div class="col-md-8 d-grid gap-2 col-6 mx-auto">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
+      </div>
+    </div>
+  </form>
+{% endblock content %} 
