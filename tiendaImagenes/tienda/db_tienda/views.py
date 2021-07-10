@@ -64,7 +64,7 @@ class ProductosImage(TemplateView):
         else:
             producto = Productos.objects.get(pk=id)
             form = Productos_form(request.POST, request.FILES, instance = producto)
-        if (form.is_valid()):
+        if (form.is_valid() and form.cleaned_data['nombre_producto'] is not ''):
             form.save()
             return redirect ('/tienda/listar_productos/')
         context = self.get_context_data(form = form)
@@ -87,7 +87,8 @@ class ClientesImage(TemplateView):
         else:
             cliente = Clientes.objects.get(pk=id)
             form = Clientes_form(request.POST, request.FILES, instance = cliente)
-        if form.is_valid():
+        
+        if (form.is_valid() and form.cleaned_data['nombre_cliente'] is not '' ):
             form.save()
             return redirect('/tienda/listar_clientes/')
         context = self.get_context_data(form = form)
@@ -99,5 +100,5 @@ class ClientesImage(TemplateView):
         else:
             cliente = Clientes.objects.get(pk=id)
             form = Clientes_form( instance = cliente)
-            return render(request,'clientes/form_clientes.html',{'form': form})
-        
+            return render(request,self.template_name,{'form': form})
+    

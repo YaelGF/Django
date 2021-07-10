@@ -18,6 +18,7 @@ class Pedido_form(forms.ModelForm):
         self.fields['codigo_producto'].empty_label = "Elige Producto"
 
 class Clientes_form(forms.ModelForm):
+    
     class Meta:
         model = Clientes
         fields = ('codigo_cliente','empresa', 'foto_cliente','nombre_cliente','apellido_cliente','puesto','direccion','poblacion','telefono','cp','cc')
@@ -25,6 +26,9 @@ class Clientes_form(forms.ModelForm):
         'nombre_cliente':'Nombre Cliente',
         'apellido_cliente':'Apellido Cliente',
         'cc': 'Tarjeta de Credito'}
+    def __init__(self, *args, **kwargs):
+        super(self.__class__, self).__init__(*args, **kwargs)
+        # asi vuelves tus campos no requeridos
 
 class Productos_form(forms.ModelForm):
     class Meta:

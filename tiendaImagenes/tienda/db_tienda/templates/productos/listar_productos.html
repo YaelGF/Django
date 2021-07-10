@@ -23,7 +23,13 @@
 
             <tr>
                 <td>{{Productos.codigo_producto}}</td>
-                <td><img src="{{Productos.foto_producto.url}}" class="img-thumbnail" width="100" height="100"></td>
+                <td>
+                    {% if Productos.foto_producto %}
+                        <img src="{{Productos.foto_producto.url}}" class="img-thumbnail"width="100" height="100">
+                    {% else %}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1200px-Imagen_no_disponible.svg.png" alt="Smiley Face"class="img-thumbnail"  width="100" height="100">
+                    {% endif %}
+                </td>
                 <td>{{Productos.nombre_producto}}</td>
                 <td>{{Productos.codigo_proveedor}}</td>
                 <td>{{Productos.precio_unidad}}</td>
